@@ -18,6 +18,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         self.theChosenOneLabel.alpha = 0
+        self.theImageView.alpha = 0
         
         self.revealButton.addTarget(self, action: "revealTheChosenOne", forControlEvents: UIControlEvents.TouchUpInside)
     }
@@ -29,8 +30,14 @@ class ViewController: UIViewController {
 
 
     func revealTheChosenOne(){
-        self.theImageView.image = UIImage(named:"harrypotter")
-        self.theChosenOneLabel.alpha = 1
+        
+        UIView.animateWithDuration(10.0, delay: 0.0, options: .CurveLinear, animations:{
+            self.theImageView.image = UIImage(named:"harrypotter")
+            self.theImageView.alpha = 1
+            self.theChosenOneLabel.alpha = 1
+            }, completion:{
+            finished in println("animation ends")
+        })
     }
 }
 
